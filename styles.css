@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 75%, #e94560 100%);
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(15, 52, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(22, 33, 62, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Header */
+.hero {
+    text-align: center;
+    padding: 4rem 0 2rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    background: linear-gradient(45deg, #e94560, #f39c12, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Quotes Container */
+.quotes-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.quote-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e94560, #f39c12, #e74c3c, #9b59b6);
+    background-size: 300% 100%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.quote-box:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 10px 25px rgba(233, 69, 96, 0.3);
+}
+
+.quote-box:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.quote-box:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+.quote-box:nth-child(even):hover {
+    transform: translateY(-8px) scale(1.02) rotate(0deg);
+}
+
+.quote-box:nth-child(odd):hover {
+    transform: translateY(-8px) scale(1.02) rotate(0deg);
+}
+
+.quote-box blockquote {
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.quote-box blockquote::before {
+    content: '"';
+    font-size: 5rem;
+    background: linear-gradient(45deg, #e94560, #f39c12);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: absolute;
+    top: -1.5rem;
+    left: -1rem;
+    opacity: 0.4;
+    font-family: Georgia, serif;
+    font-weight: bold;
+}
+
+.quote-box cite {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #e94560, #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: right;
+    font-style: normal;
+    margin-top: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .quotes-container {
+        margin: 1rem auto;
+        padding: 0 1rem 3rem;
+    }
+    
+    .quote-box {
+        padding: 2rem;
+    }
+    
+    .quote-box blockquote {
+        font-size: 1.2rem;
+    }
+    
+    .quote-box blockquote::before {
+        font-size: 3rem;
+        top: -0.5rem;
+        left: -0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .quotes-container {
+        padding: 0 1rem 2rem;
+    }
+    
+    .quote-box {
+        padding: 1.5rem;
+    }
+    
+    .quote-box blockquote {
+        font-size: 1.1rem;
+    }
+}
